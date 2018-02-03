@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CD;
+using CN.Excepciones;
 
 namespace CN {
     class Cliente {
@@ -111,46 +113,46 @@ namespace CN {
 
         #region Funciones
 
-        public bool guardar() {
+        public void guardar() {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             
-            parametros.Add("@nombre", this.nombre);
-            parametros.Add("@apellidos", this.apellidos);
-            parametros.Add("@domicilio", this.domicilio);
-            parametros.Add("@fechaNacimiento", this.fechaNacimiento);
-            parametros.Add("@telefono", this.telefono);
-            parametros.Add("@correo", this.correo);
-            parametros.Add("@RFC", this.RFC);
-            
+            parametros.Add("@nombre", this._nombre);
+            parametros.Add("@apellidos", this._apellidos);
+            parametros.Add("@domicilio", this._domicilio);
+            parametros.Add("@fechaNacimiento", this._fechaNacimiento);
+            parametros.Add("@telefono", this._telefono);
+            parametros.Add("@correo", this._correo);
+            parametros.Add("@RFC", this._RFC);
 
-            if(_idCliente > 0) {
-                //Update
-                parametros.Add("@idCliente", this.idCliente);
-                int resultado = CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPCCliente", parametros);
-                if(resultado == 1) {
-                    return true;
+            try {
+                if (_idCliente > 0)
+                {
+                    //Update
+                    parametros.Add("@idCliente", this._idCliente);
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCCliente", parametros) == 0)
+                    {
+                        throw new CustomException("No se actualizo el registro");
+                    }
                 }
-                return false;
-            } else {
-                //Insert
-                parametros.Add("@esActivo", this.esActivo);
-                return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPACliente", parametros) == 1;
+                else {
+                    //Insert
+                    parametros.Add("@esActivo", this._esActivo);
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPACliente", parametros) == 0)
+                    {
+                        throw new CustomException("No se creo el registro");
+                    }
+                }
             }
-        }
-
-        public bool desactivar() {
-            return false;
-        }
-
-        public bool eliminar() {
-            return false;
+            catch (Exception ex) {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
         }
 
         #endregion
 
         #region Metodos Estaticos
 
-        public static bool eliminar(int idClinte) {
+        public static bool desactivar(int idClinte) {
             return false; //TODO: Implementar CD Y Store Procedure
         }
 
