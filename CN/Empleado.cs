@@ -107,7 +107,7 @@ namespace CN
         #endregion Constructores
 
         #region Funciones
-        public CustomException guardar()//SPI
+        public void guardar()//SPI
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             parametros.Add("@nombreCompleto", this._nombreCompleto);
@@ -118,13 +118,13 @@ namespace CN
             parametros.Add("@contrasena", this._contrasena);
 
             try
-            {
+            {   
                 if (_idEmpleado > 0) //SP - Update
                 {
                     parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
                     if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros) == 0)
                     {
-                        return new CustomException("No se actualizo el registro.");
+                        throw new CustomException("No se actualizo el registro.");
                     }
                 }
                 else //SP - Insert
@@ -132,16 +132,14 @@ namespace CN
                     parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
                     if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 0)
                     {
-                        return new CustomException("No se creo el registro.");
+                        throw new CustomException("No se creo el registro.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                return new CustomException(ex.Message.ToString(), ex);
+                throw new CustomException(ex.Message.ToString(), ex);
             }
-                
-            return null;
         }
         public bool desactivar()
         {
