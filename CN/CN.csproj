@@ -43,6 +43,7 @@
     <Compile Include="CategoriasProducto.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="ModoPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
