@@ -48,10 +48,12 @@ namespace CN
 
         #region Constructores
         public ModoPago(int idModoPago,
+                         string nombre,
                          string detalles
                         , bool esActivo)
         {
             _idModoPago = idModoPago;
+            _nombre = nombre;
             _detalles = detalles;
             _esActivo = esActivo;
         }
@@ -59,16 +61,38 @@ namespace CN
         public ModoPago(DataRow fila)
         {
             _idModoPago = fila.Field<int>("idModoPago");
-            _detalles = fila.Field<string>("detalles");            
+            _nombre = fila.Field<string>("nombre");
+            _detalles = fila.Field<string>("detalles");
             _esActivo = fila.Field<bool>("esActivo");
-            //_fecha = fila.Field<Datetime>("fechaInicio");
         }
         #endregion
 
         #region Funciones
         public bool guardar()
         {
-            return false;
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            
+            parametros.Add("@nombre", this._nombre);
+            parametros.Add("@detalles", this._detalles);
+            
+
+            if (_idModoPago > 0)
+            {// Update
+                parametros.Add("@idModoPago", this._idModoPago);
+                int resultado = CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros);
+
+                if (resultado == 1)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            else
+            { // Insert
+                parametros.Add("@esActivo", this._esActivo);
+                return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 1;
+            }
         }
 
         public bool desactivar()

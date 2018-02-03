@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace CN
@@ -88,13 +89,62 @@ namespace CN
             this.correoElectronico = correoElectronico;
             this.contrasena = contrasena;
         }
+
+        public Empleado(DataRow fila)
+        {
+            _idEmpleado = fila.Field<int>("idEmpleado");
+            _nombreCompleto = fila.Field<string>("nombreCompleto");
+            _fechaIngreso = fila.Field<DateTime>("fechaIngreso");
+            _idRol = fila.Field<int>("idRol");
+            _esActivo = fila.Field<bool>("esActivo");
+            _fechaNacimiento = fila.Field<DateTime>("fechaNacimiento");
+            _correoElectronico = fila.Field<string>("correoElectronico");
+            _contrasena = fila.Field<string>("contrasena");
+        }
         #endregion Constructores
+
         #region Funciones
+        public bool guardar()//SPI
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@nombreCompleto", this._nombreCompleto);
+            parametros.Add("@fechaIngreso", this._fechaIngreso);
+            parametros.Add("@idRol", this._idRol);
+            parametros.Add("@fechaNacimiento", this._fechaNacimiento);
+            parametros.Add("@correoElectronico", this._correoElectronico);
+            parametros.Add("@contrasena", this._contrasena);
+
+            if (_idEmpleado > 0) //SP - Update
+            {
+                parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
+                int resultado = CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros);
+                if (resultado == 1) 
+                {
+                    return true; 
+                }
+                    return false;
+
+            }
+            else //SP - Insert
+            {
+                parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
+                return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 1;
+            }
+
+        }
+        public bool desactivar()
+        {
+            return false;
+        }
+        public bool eliminar()
+        {
+            return false;
+        }
         #endregion Funciones
         #region MetodosEstaticos
         public static bool eliminar(int idEmpleado)
             {
-            return false; //TODO: Implementar CD y Stoe Procedure;
+            return false; //TODO: Implementar CD y Stored Procedure;
             }
         #endregion MetodosEstaticos
     }
