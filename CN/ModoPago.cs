@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,13 +55,35 @@ namespace CN
             _detalles = detalles;
             _esActivo = esActivo;
         }
+
+        public ModoPago(DataRow fila)
+        {
+            _idModoPago = fila.Field<int>("idModoPago");
+            _detalles = fila.Field<string>("detalles");            
+            _esActivo = fila.Field<bool>("esActivo");
+            //_fecha = fila.Field<Datetime>("fechaInicio");
+        }
         #endregion
 
         #region Funciones
+        public bool guardar()
+        {
+            return false;
+        }
 
+        public bool desactivar()
+        {
+            return false;
+        }
+
+        public bool eliminar()
+        {
+            return false;
+        }
+        
         #endregion
 
-        #region Metodos Estaticos
+            #region Metodos Estaticos
 
         public static bool eliminar(int idModoPago)
         {
