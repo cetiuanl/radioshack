@@ -152,9 +152,61 @@ namespace CN {
 
         #region Metodos Estaticos
 
-        public static bool desactivar(int idClinte) {
-            return false; //TODO: Implementar CD Y Store Procedure
+        public static void desactivar(int idCliente, bool esActivo = false) {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idCliente", idCliente);
+            parametros.Add("@esActivo", esActivo);
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBCliente", parametros) == 0)
+                {
+                    throw new CustomException("No se elimino el registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
         }
+
+        public static Cliente buscarPorId(int idCliente) {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idCliente", idCliente);
+            DataTable dt = new DataTable();
+            try {
+                DataBaseHelper.Fill(dt, "dbo.SPLCliente", parametros);
+            }
+            catch (Exception ex) {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            Cliente resultado = null;
+            foreach (DataRow fila in dt.Rows) {
+                resultado = new Cliente(fila);
+                break;
+            }
+            return resultado;
+        }
+
+        public static List<Cliente> traerTodos(bool filtrarSoloActivos = false) {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            if (filtrarSoloActivos) {
+                parametros.Add("@esActivo", true);
+            }
+            DataTable dt = new DataTable();
+            try {
+                DataBaseHelper.Fill(dt, "dbo.SPLCliente", parametros);
+            }
+            catch (Exception ex) {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            List<Cliente> listado = new List<Cliente>();
+            foreach (DataRow fila in dt.Rows) {
+                listado.Add(new Cliente(fila));
+            }
+            return listado;
+        }
+
+
 
         #endregion
 

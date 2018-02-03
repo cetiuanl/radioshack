@@ -96,22 +96,82 @@ namespace CN
             }
         }
 
-        public bool desactivar()
-        {
-            return false;
-        }
 
-        public bool eliminar()
-        {
-            return false;
-        }
+
+
 
         #endregion
         #region Metodos estaticos
-        public static bool eliminar (int id)
+        public static void desactivar(int idCategoria)
         {
-            return false;
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idcategoria", idCategoria);
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBCategoriasProducto", parametros) == 0)
+                {
+                    throw new CustomException("No se ha eliminado el registro.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new CustomException(ex.Message.ToString(),ex);
+            }
         }
+
+        public static CategoriasProducto buscarPorID(int idCategoria)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idCategoria", idCategoria);
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLCategoriasProducto", parametros);
+            }
+            catch(Exception ex) {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            CategoriasProducto resultado = null;
+            foreach(DataRow fila in dt.Rows)
+            {
+                resultado = new CategoriasProducto(fila);
+                break;
+            }
+            return resultado;
+        }
+        public static List<CategoriasProducto> traerTodos(bool filtrarSoloActivos = false)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@idCategoria", true);
+
+            }
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLCategoriasProducto", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            List<CategoriasProducto> listado = new List<CategoriasProducto>();
+            foreach(DataRow fila in dt.Rows)
+            {
+                listado.Add(new CategoriasProducto(fila));
+            }
+            return listado;
+        }
+
+
         #endregion
     }
+
+
 }
+
