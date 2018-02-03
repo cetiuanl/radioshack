@@ -6,7 +6,7 @@ using System;
 
 namespace CN
 {
-    class ModoPago
+    public class ModoPago
     {
         #region Propiedades
         private int _idModoPago;
@@ -105,33 +105,83 @@ namespace CN
 
         #region Metodos Estaticos
 
-        public static bool desactivar(int idModoPago)
+        public static void desactivar(int idModoPago)
         {
-            return false;//TODO: Implementar CD y Store Procedure
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            parametros.Add("@idModoPago", idModoPago);
+
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                {
+                    throw new CustomException("No se elimino el registro.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
         }
 
+        public static ModoPago buscarPorId(int idModoPago)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
 
+            parametros.Add("@idModoPago", idModoPago);
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLModoPago", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
+            ModoPago resultado = null;
+
+            foreach(DataRow fila in dt.Rows)
+            {
+                resultado = new ModoPago(fila);
+                break;
+            }
+
+            return resultado;
+        }
+
+        public static List<ModoPago> traerTodos(bool filtrarSoloActivos = false)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@esActivo", true);
+            }            
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLModoPago", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
+            List<ModoPago> listado = new List<ModoPago>();
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                listado.Add(new ModoPago(fila));             
+            }
+
+            return listado;
+        }
         #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
     }
 }
