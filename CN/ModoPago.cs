@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CD;
+using CN.Excepciones;
 
 namespace CN
 {
@@ -68,7 +70,7 @@ namespace CN
         #endregion
 
         #region Funciones
-        public bool guardar()
+        public CustomException guardar()
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             
@@ -79,37 +81,29 @@ namespace CN
             if (_idModoPago > 0)
             {// Update
                 parametros.Add("@idModoPago", this._idModoPago);
-                int resultado = CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros);
+                int resultado = DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros);
 
                 if (resultado == 1)
                 {
-                    return true;
+                    CustomException ex = new CustomException("mensaje");
+
+                    return ex;
                 }
 
-                return false;
+                return null;
             }
             else
             { // Insert
                 parametros.Add("@esActivo", this._esActivo);
-                return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 1;
+                return DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 1;
             }
-        }
-
-        public bool desactivar()
-        {
-            return false;
-        }
-
-        public bool eliminar()
-        {
-            return false;
         }
         
         #endregion
 
-            #region Metodos Estaticos
+        #region Metodos Estaticos
 
-        public static bool eliminar(int idModoPago)
+        public static bool desactivar(int idModoPago)
         {
             return false;//TODO: Implementar CD y Store Procedure
         }

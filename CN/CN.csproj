@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CategoriasProducto.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Excepciones\CustomException.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="ModoPago.cs" />
