@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CD;
+using CN.Excepciones
 
 namespace CN
 {
@@ -79,10 +82,64 @@ namespace CN
             this.esActivo = esActivo;
 
         }
+
+        public Producto(DataRow fila)
+        {
+            _idProducto = fila.Field < int > ("idProducto");
+            _nombre = fila.Field < string > ("nombre");
+            _marca = fila.Field < string > ("marca");
+            _precio = fila.Field < double > ("precio");
+            _inventario = fila.Field < double > ("inventario");
+            _idCategoria = fila.Field < int > ("idCategoria");
+            _esActivo = fila.Field < bool > ("esActivo");
+
+        }
         #endregion
 
         #region FUNCIONES
+        public void guardar()
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@nombre", this._nombre);
+            parametros.Add("@marca", this._marca);
+            parametros.Add("@precio", this._precio);
+            parametros.Add("@inventario", this._inventario);
+            parametros.Add("@idCategoria", this._idCategoria);
 
+            try
+            {
+                if (_idProducto > 0)
+                {//Update
+                    parametros.Add("@idProducto", this._idProducto);
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCProductos", parametros) == 0)
+                    {
+                        throw new CustomException ("No se actualizo el registro.")
+                    }
+                }
+                else
+                {//Insert
+                    parametros.Add("@esActivo", this.esActivo);
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCProductos", parametros) == 0)
+                    {
+                        throw new CustomException("No se creo el registro");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+        }
+
+        public bool desactivar()
+        {
+            return false;
+        }
+
+        public bool eliminar()
+        {
+            return false;
+        }
         #endregion
 
         #region METODOS ESTATICOS
