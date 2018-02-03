@@ -131,23 +131,86 @@ namespace CN
             }
         }
 
-        public bool desactivar()
-        {
-            return false;
-        }
-
-        public bool eliminar()
-        {
-            return false;
-        }
         #endregion
 
         #region METODOS ESTATICOS
 
-        public static bool eliminar(int idProducto)
+        public static void desactivar(int idProducto)
         {
-            return false;//TODO Implementar CD y Store Procedure
+                Dictionary<string, object> parametros = new Dictionary<string, object>();
+                parametros.Add("@idProducto", idProducto);
+
+                try
+                {
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPBProductos", parametros) == 0)
+                        {
+                            throw new CustomException("No se elimino el registro.");
+                        }
+                    }
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message.ToString(), ex);
+                }
+            }
+
+        public static Producto buscarPorId(int idProducto)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idProducto", idProducto);
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLProductos", parametros);
+            }
+            catch (Exception ex)
+            {
+
+                throw new CustomException(ex.Message.ToString(),ex);
+            }
+
+            Producto resultado = null;
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                resultado = new Producto(fila);
+                break;
+            }
+            return resultado;
         }
+
+        public static List<Producto> traerTodos(bool filtrarSoloActivos = false)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@esActivo", true);
+            }
+
+            DataTable dt = new DataTable();
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLProductos", parametros);
+            }
+            catch (Exception ex)
+            {
+
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            List<Producto> listado = new List<Producto>();
+
+            foreach (DataRow fila in dt.Rows)
+            {
+                listado.Add(new Producto(fila));
+            }
+
+            return listado;
+        }
+
+
         #endregion
     }
 }
