@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CD;
 using CN.Excepciones;
+using System;
 
 namespace CN
 {
@@ -70,33 +67,38 @@ namespace CN
         #endregion
 
         #region Funciones
-        public CustomException guardar()
+        public void guardar()
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             
             parametros.Add("@nombre", this._nombre);
             parametros.Add("@detalles", this._detalles);
-            
 
-            if (_idModoPago > 0)
-            {// Update
-                parametros.Add("@idModoPago", this._idModoPago);
-                int resultado = DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros);
-
-                if (resultado == 1)
+            try
+            {
+                if (_idModoPago > 0)
                 {
-                    CustomException ex = new CustomException("mensaje");
+                    parametros.Add("@idModoPago", this._idModoPago);
 
-                    return ex;
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros) == 0)
+                    {
+                        throw new CustomException("No se actualizo el registro.");
+                    }
                 }
+                else
+                {
+                    parametros.Add("@esActivo", this._esActivo);
 
-                return null;
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 0)
+                    {
+                        throw new CustomException("No se creo el registro.");
+                    }
+                }
             }
-            else
-            { // Insert
-                parametros.Add("@esActivo", this._esActivo);
-                return DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 1;
-            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }            
         }
         
         #endregion
