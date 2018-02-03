@@ -93,7 +93,7 @@ namespace CN
             this.contrasena = contrasena;
         }
 
-        public Empleado(DataRow fila)
+        public Empleado(DataRow fila) //DataRow
         {
             _idEmpleado = fila.Field<int>("idEmpleado");
             _nombreCompleto = fila.Field<string>("nombreCompleto");
@@ -119,10 +119,10 @@ namespace CN
 
             try
             {   
-                if (_idEmpleado > 0) //SP - Update
+                if (_idEmpleado > 0) //SP - Update de registros
                 {
                     parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
-                    if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros) == 0)
                     {
                         throw new CustomException("No se actualizo el registro.");
                     }
@@ -130,7 +130,7 @@ namespace CN
                 else //SP - Insert
                 {
                     parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
-                    if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 0)
                     {
                         throw new CustomException("No se creo el registro.");
                     }
@@ -141,20 +141,83 @@ namespace CN
                 throw new CustomException(ex.Message.ToString(), ex);
             }
         }
-        public bool desactivar()
-        {
-            return false;
-        }
-        public bool eliminar()
-        {
-            return false;
-        }
         #endregion Funciones
+
         #region MetodosEstaticos
-        public static bool eliminar(int idEmpleado)
+        public static void desactivar(int idEmpleado) //EsActivo pasa a 0
             {
-            return false; //TODO: Implementar CD y Stored Procedure;
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idEmpleado", idEmpleado);
+
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBEmplados", parametros) == 0)
+                {
+                    throw new CustomException("No se elimino el registro.");
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
+        }
+
+        public static Empleado buscarPorId(int idEmpleado) //Consulta de datos SELECT 
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@idEmpleado", idEmpleado);
+
+            DataTable dt = new DataTable(); //Registros SQL, se usa cuando tenemos un SELECT * FROM, se guarda en un datatable
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLEmpleado", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            Empleado resultado = null;
+
+            foreach (DataRow fila in dt.Rows) //Recorremos el SELECT por filas
+            {
+                resultado = new Empleado(fila);
+                break;
+            }
+            return resultado;
+        }
+
+        public static List<Empleado> traerTodos(bool filtrarSoloActivos = false) //Consulta el listado embase a los activos o no activos
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@esActivo", true);
+            }
+
+            DataTable dt = new DataTable(); //Registros SQL, se usa cuando tenemos un SELECT * FROM, se guarda en un datatable
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLEmpleado", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
+            List<Empleado> listado = new List<Empleado>();
+
+            foreach (DataRow fila in dt.Rows) //Recorremos el SELECT por filas
+            {
+                listado.Add(new Empleado(fila));
+            }
+            return listado;
+        }
+
         #endregion MetodosEstaticos
     }
 }
