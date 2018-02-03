@@ -44,6 +44,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ModoPago.cs" />
+    <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
