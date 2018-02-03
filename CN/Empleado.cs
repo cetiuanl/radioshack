@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Threading.Tasks;
+using CD;
+using CN.Excepciones;
+
 
 namespace CN
 {
@@ -117,7 +120,7 @@ namespace CN
             if (_idEmpleado > 0) //SP - Update
             {
                 parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
-                int resultado = CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros);
+                int resultado = CD.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros);
                 if (resultado == 1) 
                 {
                     return true; 
@@ -128,7 +131,7 @@ namespace CN
             else //SP - Insert
             {
                 parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
-                return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 1;
+                return CD.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 1;
             }
 
         }
