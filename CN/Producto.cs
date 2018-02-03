@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CD;
-using CN.Excepciones
+using CN.Excepciones;
 
 namespace CN
 {
@@ -113,7 +113,7 @@ namespace CN
                     parametros.Add("@idProducto", this._idProducto);
                     if (DataBaseHelper.ExecuteNonQuery("dbo.SPCProductos", parametros) == 0)
                     {
-                        throw new CustomException ("No se actualizo el registro.")
+                        throw new CustomException("No se actualizo el registro.");
                     }
                 }
                 else
