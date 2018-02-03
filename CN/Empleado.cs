@@ -107,7 +107,7 @@ namespace CN
         #endregion Constructores
 
         #region Funciones
-        public bool guardar()//SPI
+        public CustomException guardar()//SPI
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             parametros.Add("@nombreCompleto", this._nombreCompleto);
@@ -117,23 +117,31 @@ namespace CN
             parametros.Add("@correoElectronico", this._correoElectronico);
             parametros.Add("@contrasena", this._contrasena);
 
-            if (_idEmpleado > 0) //SP - Update
+            try
             {
-                parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
-                int resultado = CD.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros);
-                if (resultado == 1) 
+                if (_idEmpleado > 0) //SP - Update
                 {
-                    return true; 
+                    parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
+                    if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros) == 0)
+                    {
+                        return new CustomException("No se actualizo el registro.");
+                    }
                 }
-                    return false;
-
+                else //SP - Insert
+                {
+                    parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
+                    if (CD.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 0)
+                    {
+                        return new CustomException("No se creo el registro.");
+                    }
+                }
             }
-            else //SP - Insert
+            catch (Exception ex)
             {
-                parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
-                return CD.DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 1;
+                return new CustomException(ex.Message.ToString(), ex);
             }
-
+                
+            return null;
         }
         public bool desactivar()
         {
