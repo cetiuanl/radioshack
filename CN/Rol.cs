@@ -1,4 +1,5 @@
 using CD;
+using CN.Excepciones;
 using System.Collections.Generic;
 using System.Data;
 
@@ -59,7 +60,7 @@ namespace CapaNegocios
         #endregion
 
         #region Metodos y Funciones
-        public bool guardar()
+        public void guardar()
         {
             //Creo un diccionario para guardar los parametros
             Dictionary<string, object> parametros = new Dictionary<string, object>();
@@ -74,35 +75,61 @@ namespace CapaNegocios
                 //Agregamos el parametro del id de la tabla utilizado para ubicar el registro
                 //a modificar
                 parametros.Add("@idRol", this.idRol);
-                // Si el valor que regresa nonQuery es igual a 1, entonces es TRUE
-                return DataBaseHelper.ExecuteNonQuery("dbo.SPURol", parametros) == 1;
+                
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPCRoles", parametros) == 0)
+                {
+                    throw new CustomException("No se actualizo el registro.");
+                }
             }
             else //Si idRol = cero, significa que es una registro nuevo, entonces usar Insert.
             {
-                return DataBaseHelper.ExecuteNonQuery("dbo.SPIRol", parametros) == 1;
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPIRoles", parametros) == 0)
+                {
+                    throw new CustomException("No se actualizo el registro.");
+                }
             }
+
+            return null;
         }
-        public static bool desactivar(int _idRol)
+
+        public static void desactivar(int idRol)
         {
             if (_idRol > 0)
             {
                 Dictionary<string, object> parametros = new Dictionary<string, object>();
 
-                parametros.Add("@idRol", _idRol);
-
-                return DataBaseHelper.ExecuteNonQuery("dbo.SPDRol", parametros) == 1;
-            }
-            else {
-                return false;
+                parametros.Add("@idRol", idRol);
+                
+                try
+                {
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPBRoles", parametros) == 0)
+                    {
+                        throw new CustomException("No se elimino el registro.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message.ToString(), ex);
+                }
             }
         }
+
         public static Rol traerPorId(int _idRol)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             parametros.Add("@idRol", _idRol);
 
             DataTable dt = new DataTable();
-            DataBaseHelper.Fill(dt, "dbo.SPSRoles", parametros);
+            
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
             Rol oResultado = new Rol();
 
             foreach (DataRow item in dt.Rows)
@@ -117,7 +144,15 @@ namespace CapaNegocios
             Dictionary<string, object> parametros = new Dictionary<string, object>();
 
             DataTable dt = new DataTable();
-            DataBaseHelper.Fill(dt, "dbo.SPSRoles", parametros);
+
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
 
             List<Rol> listado = new List<Rol>();
 
@@ -135,8 +170,16 @@ namespace CapaNegocios
 
 
             DataTable dt = new DataTable();
-            DataBaseHelper.Fill(dt, "dbo.SPSRoles", parametros);
 
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            
             List<Rol> listado = new List<Rol>();
 
             foreach (DataRow item in dt.Rows)
