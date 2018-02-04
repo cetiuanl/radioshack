@@ -107,21 +107,24 @@ namespace CN
 
         public static void desactivar(int idModoPago, bool esActivo = false)
         {
-            Dictionary<string, object> parametros = new Dictionary<string, object>();
-
-            parametros.Add("@idModoPago", idModoPago);
-            parametros.Add("@esActivo", esActivo);
-
-            try
+            if (_idRol > 0)
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+                parametros.Add("@idModoPago", idModoPago);
+                parametros.Add("@esActivo", esActivo);
+
+                try
                 {
-                    throw new CustomException("No se elimino el registro.");
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                    {
+                        throw new CustomException("No se elimino el registro.");
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new CustomException(ex.Message.ToString(), ex);
+                catch (Exception ex)
+                {
+                    throw new CustomException(ex.Message.ToString(), ex);
+                }
             }
         }
 
