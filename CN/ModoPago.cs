@@ -105,11 +105,12 @@ namespace CN
 
         #region Metodos Estaticos
 
-        public static void desactivar(int idModoPago)
+        public static void desactivar(int idModoPago, bool esActivo = false)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
 
             parametros.Add("@idModoPago", idModoPago);
+            parametros.Add("@esActivo", esActivo);
 
             try
             {

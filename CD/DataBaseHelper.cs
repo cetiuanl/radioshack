@@ -10,9 +10,9 @@ namespace CD
     {
         #region "FILL DATA TABLE"
 #if DEBUG
-        static string _connectionString = "";
+        static string _connectionString = "Server=148.234.16.54;Database=dbRadioShack;User Id=ceti;Password=ceti;";
 #else
-        static string _connectionString = ConfigurationManager.ConnectionStrings["conexionRelease"].ToString();
+        static string _connectionString = "Server=148.234.16.54;Database=dbRadioShack;User Id=ceti;Password=ceti;";
 #endif
 
         public static void Fill(DataTable dataTable, String procedureName)
