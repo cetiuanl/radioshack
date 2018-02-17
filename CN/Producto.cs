@@ -9,7 +9,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    class Producto
+    public class Producto
     {
         #region PROPIEDADES
         private int _idProducto;
@@ -36,17 +36,17 @@ namespace CN
             set { _marca = value; }
         }
 
-        private double _precio; //TODO: pendiente revisar
+        private decimal _precio; //TODO: pendiente revisar
 
-        public double precio
+        public decimal precio
         {
             get { return _precio; }
             set { _precio = value; }
         }
 
-        private double _inventario; //TODO: pendiente revisar
+        private decimal _inventario; //TODO: pendiente revisar
 
-        public double inventario
+        public decimal inventario
         {
             get { return _inventario; }
             set { _inventario = value; }
@@ -71,7 +71,7 @@ namespace CN
 
         #region CONSTRUCTORES
         public Producto(int idProducto, string nombre, string marca,
-            double precio, double inventario, int idCategoria, bool esActivo)
+            decimal precio, decimal inventario, int idCategoria, bool esActivo)
         {
             this.idProducto = idProducto;
             this.nombre = nombre;
@@ -88,8 +88,8 @@ namespace CN
             _idProducto = fila.Field < int > ("idProducto");
             _nombre = fila.Field < string > ("nombre");
             _marca = fila.Field < string > ("marca");
-            _precio = fila.Field < double > ("precio");
-            _inventario = fila.Field < double > ("inventario");
+            _precio = fila.Field < decimal > ("precio");
+            _inventario = fila.Field < decimal > ("inventario");
             _idCategoria = fila.Field < int > ("idCategoria");
             _esActivo = fila.Field < bool > ("esActivo");
 
