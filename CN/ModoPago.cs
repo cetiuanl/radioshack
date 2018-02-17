@@ -107,7 +107,7 @@ namespace CN
 
         public static void desactivar(int idModoPago, bool esActivo = false)
         {
-            if (_idRol > 0)
+            if (idModoPago > 0)
             {
                 Dictionary<string, object> parametros = new Dictionary<string, object>();
 
