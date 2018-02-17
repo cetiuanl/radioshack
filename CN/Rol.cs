@@ -1,5 +1,6 @@
 using CD;
 using CN.Excepciones;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -87,14 +88,12 @@ namespace CapaNegocios
                 {
                     throw new CustomException("No se actualizo el registro.");
                 }
-            }
-
-            return null;
+            }            
         }
 
         public static void desactivar(int idRol)
         {
-            if (_idRol > 0)
+            if (idRol > 0)
             {
                 Dictionary<string, object> parametros = new Dictionary<string, object>();
 
