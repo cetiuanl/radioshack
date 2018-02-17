@@ -37,29 +37,33 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModoPagos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvModoPagos
             // 
             this.dgvModoPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModoPagos.Location = new System.Drawing.Point(38, 71);
+            this.dgvModoPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.esActivo});
+            this.dgvModoPagos.Location = new System.Drawing.Point(28, 41);
             this.dgvModoPagos.Name = "dgvModoPagos";
             this.dgvModoPagos.Size = new System.Drawing.Size(574, 273);
             this.dgvModoPagos.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(222, 610);
+            this.btnGuardar.Location = new System.Drawing.Point(178, 562);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Location = new System.Drawing.Point(336, 610);
+            this.btnDesactivar.Location = new System.Drawing.Point(292, 562);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
             this.btnDesactivar.TabIndex = 2;
@@ -77,8 +81,10 @@
             // 
             this.txtIdModoPago.Location = new System.Drawing.Point(127, 396);
             this.txtIdModoPago.Name = "txtIdModoPago";
+            this.txtIdModoPago.ReadOnly = true;
             this.txtIdModoPago.Size = new System.Drawing.Size(100, 20);
             this.txtIdModoPago.TabIndex = 4;
+            this.txtIdModoPago.Text = "0";
             // 
             // txtDetalles
             // 
@@ -114,11 +120,18 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Detalles:";
             // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
+            // 
             // frmModoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 660);
+            this.ClientSize = new System.Drawing.Size(637, 660);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -148,5 +161,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
     }
 }
