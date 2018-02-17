@@ -1,0 +1,163 @@
+﻿namespace SistemaVentas
+{
+    partial class frmCategoriasProducto
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.dgvCategoriasProducto = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnDesactivar = new System.Windows.Forms.Button();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtidCategoriasProducto = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.lblidCategoriasProducto = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriasProducto)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvCategoriasProducto
+            // 
+            this.dgvCategoriasProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoriasProducto.Location = new System.Drawing.Point(46, 45);
+            this.dgvCategoriasProducto.Name = "dgvCategoriasProducto";
+            this.dgvCategoriasProducto.Size = new System.Drawing.Size(685, 210);
+            this.dgvCategoriasProducto.TabIndex = 0;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(212, 472);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            // 
+            // btnDesactivar
+            // 
+            this.btnDesactivar.Location = new System.Drawing.Point(435, 472);
+            this.btnDesactivar.Name = "btnDesactivar";
+            this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
+            this.btnDesactivar.TabIndex = 2;
+            this.btnDesactivar.Text = "Eliminar";
+            this.btnDesactivar.UseVisualStyleBackColor = true;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(289, 388);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(221, 20);
+            this.txtNombre.TabIndex = 3;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(289, 339);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(221, 20);
+            this.txtDescripcion.TabIndex = 4;
+            // 
+            // txtidCategoriasProducto
+            // 
+            this.txtidCategoriasProducto.Location = new System.Drawing.Point(289, 284);
+            this.txtidCategoriasProducto.Name = "txtidCategoriasProducto";
+            this.txtidCategoriasProducto.Size = new System.Drawing.Size(100, 20);
+            this.txtidCategoriasProducto.TabIndex = 5;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(615, 310);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 6;
+            // 
+            // lblidCategoriasProducto
+            // 
+            this.lblidCategoriasProducto.AutoSize = true;
+            this.lblidCategoriasProducto.Location = new System.Drawing.Point(209, 287);
+            this.lblidCategoriasProducto.Name = "lblidCategoriasProducto";
+            this.lblidCategoriasProducto.Size = new System.Drawing.Size(65, 13);
+            this.lblidCategoriasProducto.TabIndex = 7;
+            this.lblidCategoriasProducto.Text = "id Categoría";
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(209, 342);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 8;
+            this.lblNombre.Text = "Nombre";
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.Location = new System.Drawing.Point(209, 395);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
+            this.lblDescripcion.TabIndex = 9;
+            this.lblDescripcion.Text = "Descripción";
+            // 
+            // frmCategoriasProducto
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(773, 525);
+            this.Controls.Add(this.lblDescripcion);
+            this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.lblidCategoriasProducto);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtidCategoriasProducto);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.btnDesactivar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.dgvCategoriasProducto);
+            this.Name = "frmCategoriasProducto";
+            this.Text = "Categorias de productos";
+            this.Load += new System.EventHandler(this.frmCategoriasProducto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriasProducto)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dgvCategoriasProducto;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnDesactivar;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtidCategoriasProducto;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label lblidCategoriasProducto;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblDescripcion;
+    }
+}

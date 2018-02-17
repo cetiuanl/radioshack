@@ -45,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.cboIdRol = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,11 +187,20 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Contraseña:";
             // 
+            // cboIdRol
+            // 
+            this.cboIdRol.FormattingEnabled = true;
+            this.cboIdRol.Location = new System.Drawing.Point(574, 309);
+            this.cboIdRol.Name = "cboIdRol";
+            this.cboIdRol.Size = new System.Drawing.Size(121, 21);
+            this.cboIdRol.TabIndex = 18;
+            // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 607);
+            this.Controls.Add(this.cboIdRol);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -236,5 +246,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboIdRol;
     }
 }

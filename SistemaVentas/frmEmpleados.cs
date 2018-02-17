@@ -20,13 +20,17 @@ namespace SistemaVentas
 
         private void frmEmpleados_Load(object sender, EventArgs e)
         {
+            //Data consulta tblEmpleados
             List<Empleado> listado = Empleado.traerTodos(true);
             dgvEmpleados.DataSource = listado;
             dgvEmpleados.Refresh();
 
-            List<Empleado> listado = Empleado.traerTodos(true);
-            dgvEmpleados.DataSource = listado;
-            dgvEmpleados.Refresh();
+            //Agregar categorias de db con descripción
+            List<Rol> listadoRoles = Rol.traerTodos();
+            cboIdRol.DataSource = listadoRoles;
+            cboIdRol.ValueMember = "idRol";
+            cboIdRol.DisplayMember = "descripcion";
+            cboIdRol.Refresh();
 
         }
     }
