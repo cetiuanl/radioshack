@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvRoles = new System.Windows.Forms.DataGridView();
+            this.esActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnDesactivar = new System.Windows.Forms.Button();
             this.lblIdRol = new System.Windows.Forms.Label();
             this.txtIdRol = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescRol = new System.Windows.Forms.Label();
-            this.esActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +50,13 @@
             this.dgvRoles.Size = new System.Drawing.Size(363, 167);
             this.dgvRoles.TabIndex = 0;
             // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -59,6 +66,7 @@
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnDesactivar
             // 
@@ -73,7 +81,7 @@
             // lblIdRol
             // 
             this.lblIdRol.AutoSize = true;
-            this.lblIdRol.Location = new System.Drawing.Point(38, 201);
+            this.lblIdRol.Location = new System.Drawing.Point(29, 228);
             this.lblIdRol.Name = "lblIdRol";
             this.lblIdRol.Size = new System.Drawing.Size(37, 13);
             this.lblIdRol.TabIndex = 3;
@@ -81,33 +89,28 @@
             // 
             // txtIdRol
             // 
-            this.txtIdRol.Location = new System.Drawing.Point(82, 198);
+            this.txtIdRol.Location = new System.Drawing.Point(81, 225);
             this.txtIdRol.Name = "txtIdRol";
+            this.txtIdRol.ReadOnly = true;
             this.txtIdRol.Size = new System.Drawing.Size(82, 20);
             this.txtIdRol.TabIndex = 6;
+            this.txtIdRol.Text = "0";
             // 
-            // textBox1
+            // txtDescripcion
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 224);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 20);
-            this.textBox1.TabIndex = 8;
+            this.txtDescripcion.Location = new System.Drawing.Point(81, 195);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(305, 20);
+            this.txtDescripcion.TabIndex = 8;
             // 
             // lblDescRol
             // 
             this.lblDescRol.AutoSize = true;
-            this.lblDescRol.Location = new System.Drawing.Point(12, 223);
+            this.lblDescRol.Location = new System.Drawing.Point(20, 199);
             this.lblDescRol.Name = "lblDescRol";
-            this.lblDescRol.Size = new System.Drawing.Size(63, 13);
+            this.lblDescRol.Size = new System.Drawing.Size(58, 13);
             this.lblDescRol.TabIndex = 9;
-            this.lblDescRol.Text = "Descripción";
-            // 
-            // esActivo
-            // 
-            this.esActivo.DataPropertyName = "esActivo";
-            this.esActivo.HeaderText = "esActivo";
-            this.esActivo.Name = "esActivo";
-            this.esActivo.Visible = false;
+            this.lblDescRol.Text = "Nuevo Rol";
             // 
             // FrmRoles
             // 
@@ -116,7 +119,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(415, 297);
             this.Controls.Add(this.lblDescRol);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtIdRol);
             this.Controls.Add(this.lblIdRol);
             this.Controls.Add(this.btnDesactivar);
@@ -138,7 +141,7 @@
         private System.Windows.Forms.Button btnDesactivar;
         private System.Windows.Forms.Label lblIdRol;
         private System.Windows.Forms.TextBox txtIdRol;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblDescRol;
         private System.Windows.Forms.DataGridViewCheckBoxColumn esActivo;
     }
