@@ -6,7 +6,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    public class CategoriasProducto
+    class CategoriasProducto
     {
         #region Propiedades
 
@@ -71,7 +71,7 @@ namespace CN
             {
                 if (_idCategoria > 0)
                 {
-                    parametros.Add("@idCategoria", this._idCategoria);
+                    parametros.Add("@idcategoria", this._idCategoria);
 
                     if (DataBaseHelper.ExecuteNonQuery("dbo.SPCCategoriasProducto", parametros) == 0)
                     {
@@ -105,7 +105,7 @@ namespace CN
         public static void desactivar(int idCategoria)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
-            parametros.Add("@idCategoria", idCategoria);
+            parametros.Add("@idcategoria", idCategoria);
             try
             {
                 if (DataBaseHelper.ExecuteNonQuery("dbo.SPBCategoriasProducto", parametros) == 0)
@@ -147,7 +147,7 @@ namespace CN
 
             if (filtrarSoloActivos)
             {
-                parametros.Add("@esActivo", true);
+                parametros.Add("@idCategoria", true);
 
             }
             DataTable dt = new DataTable();

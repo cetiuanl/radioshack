@@ -8,7 +8,7 @@ using CD;
 using CN.Excepciones;
 
 namespace CN {
-    class Cliente {
+    public class Cliente {
         #region Propiedades
         private int _idCliente;
 
@@ -100,7 +100,7 @@ namespace CN {
         public Cliente (DataRow fila) {
             _idCliente = fila.Field<int>("idCliente");
             _nombre = fila.Field<string>("nombre");
-            _apellidos = fila.Field<string>("apellido");
+            _apellidos = fila.Field<string>("apellidos");
             _domicilio = fila.Field<string>("domicilio");
             _fechaNacimiento = fila.Field<DateTime>("fechaNacimiento");
             _telefono = fila.Field<string>("telefono");
@@ -129,7 +129,7 @@ namespace CN {
                 {
                     //Update
                     parametros.Add("@idCliente", this._idCliente);
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCCliente", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCClientes", parametros) == 0)
                     {
                         throw new CustomException("No se actualizo el registro");
                     }
@@ -137,7 +137,7 @@ namespace CN {
                 else {
                     //Insert
                     parametros.Add("@esActivo", this._esActivo);
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPACliente", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAClientes", parametros) == 0)
                     {
                         throw new CustomException("No se creo el registro");
                     }
@@ -158,7 +158,7 @@ namespace CN {
             parametros.Add("@esActivo", esActivo);
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBCliente", parametros) == 0)
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBClientes", parametros) == 0)
                 {
                     throw new CustomException("No se elimino el registro");
                 }
@@ -174,7 +174,7 @@ namespace CN {
             parametros.Add("@idCliente", idCliente);
             DataTable dt = new DataTable();
             try {
-                DataBaseHelper.Fill(dt, "dbo.SPLCliente", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLClientes", parametros);
             }
             catch (Exception ex) {
                 throw new CustomException(ex.Message.ToString(), ex);
@@ -194,7 +194,7 @@ namespace CN {
             }
             DataTable dt = new DataTable();
             try {
-                DataBaseHelper.Fill(dt, "dbo.SPLCliente", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLClientes", parametros);
             }
             catch (Exception ex) {
                 throw new CustomException(ex.Message.ToString(), ex);

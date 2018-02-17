@@ -52,7 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEmpleados.cs">
+    <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEmpleados.Designer.cs">
@@ -61,11 +61,10 @@
     <Compile Include="frmCategoriasProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCategoriasProducto.Designer.cs">
-      <DependentUpon>frmCategoriasProducto.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </EmbeddedResource>
