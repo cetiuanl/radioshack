@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace CN
+namespace CapaNegocios
 {
     public class Rol
     {

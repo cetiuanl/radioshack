@@ -6,7 +6,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    public class CategoriasProducto
+    class CategoriasProducto
     {
         #region Propiedades
 
