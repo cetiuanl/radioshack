@@ -7,9 +7,9 @@ using CD;
 using CN.Excepciones;
 using System.Data;
 
-namespace CD
+namespace CN
 {
-    class Factura
+   public class Factura
     {
         #region Propiedades
         private int _folio;
@@ -48,8 +48,8 @@ namespace CD
 
         public int porcientoIVA
         {
-            get { return porcientoIVA; }
-            set { porcientoIVA = value; }
+            get { return _porcientoIVA; }
+            set { _porcientoIVA = value; }
         }
 
         private int _estatus;
@@ -87,7 +87,7 @@ namespace CD
             _idCliente = fila.Field<int>("idCliente");
             _fecha = fila.Field<DateTime>("fecha");
             _idModoPago = fila.Field<int>("idModoPago");
-            _porcientoIVA = fila.Field<int>("porcientoIV");
+            _porcientoIVA = fila.Field<int>("porcientoIVA");
             _estatus = fila.Field<int>("estatus");
             _idEmpleado = fila.Field<int>("idEmpleado");
         }
@@ -133,21 +133,73 @@ namespace CD
                 throw new CustomException(ex.Message.ToString(), ex);
             }
         }
-        public bool desactivar()
-        {
-            return false;
-        }
-        public bool eliminar()
-        {
-            return false;
-        }
+        
+        
         #endregion
 
         #region Metodos Estaticos
 
-        public static bool eliminar (int folio)
+        public static void desactivar(int folio)
         {
-            return false;//TODO: Implementar CD y Store Procedure
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            parametros.Add("@folio", folio);
+
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                {
+                    throw new CustomException("No se elimino el registro");
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString());
+            }
+
+        }
+
+        public static Factura buscarPorFolio (int folio)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            parametros.Add("@folio", folio);
+
+            DataTable dt = new DataTable();
+
+            DataBaseHelper.Fill(dt, "dbo.SLPFactura", parametros);
+            Factura resultado = null;
+            foreach(DataRow fila in dt.Rows)
+            {
+                resultado = new Factura(fila);
+                break;
+            }
+
+            return resultado;
+        }
+
+        public static List<Factura> traerTodos(bool filtrarSoloActivos = false)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@estatus", 1);
+            }
+            DataTable dt = new DataTable();
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SPLFacturas", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            List<Factura> listado = new List<Factura>();
+            foreach(DataRow fila in dt.Rows)
+            {
+                listado.Add(new Factura(fila));
+            }
+            return listado;
         }
 
         #endregion 
