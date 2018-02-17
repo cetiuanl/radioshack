@@ -147,7 +147,7 @@ namespace CN
 
             if (filtrarSoloActivos)
             {
-                parametros.Add("@idCategoria", true);
+                parametros.Add("@esActivo", true);
 
             }
             DataTable dt = new DataTable();
