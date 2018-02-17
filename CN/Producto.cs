@@ -9,7 +9,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    class Producto
+    public class Producto
     {
         #region PROPIEDADES
         private int _idProducto;
