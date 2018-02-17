@@ -105,7 +105,6 @@ namespace CN
             _contrasena = fila.Field<string>("contrasena");
         }
         #endregion Constructores
-
         #region Funciones
         public void guardar()//SPI
         {
@@ -164,25 +163,30 @@ namespace CN
 
         }
 
-        public static void login(string correo, string contrasena) //EsActivo pasa a 0
+        public static Empleado iniciarSesion(string correo, string contrasena)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
-            parametros.Add("@correoElectronico", correo);
+            parametros.Add("@correo", correo);
             parametros.Add("@contrasena", contrasena);
+            
+            DataTable dt = new DataTable();
 
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPLogin", parametros) == 0)
-                {
-                    throw new CustomException("No se pudo iniciar sesión. Intente nuevamente.");
-                }
+                DataBaseHelper.Fill(dt, "dbo.SPIniciarSesion", parametros);
             }
             catch (Exception ex)
             {
-
                 throw new CustomException(ex.Message.ToString(), ex);
             }
+            Empleado resultado = null;
 
+            foreach (DataRow fila in dt.Rows) //Recorremos el SELECT por filas
+            {
+                resultado = new Empleado(fila);
+                break;
+            }
+            return resultado;
         }
 
         public static Empleado buscarPorId(int idEmpleado) //Consulta de datos SELECT 

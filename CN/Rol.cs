@@ -9,8 +9,7 @@ namespace CN
     public class Rol
     {
         #region Propiedades
-        public int idRol { get; }
-       
+        public int idRol { get; }       
         public string descripcion { get; }
         public bool esActivo { get; }
         #endregion
