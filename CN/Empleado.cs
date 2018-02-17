@@ -10,7 +10,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    class Empleado
+    public class Empleado
     {
         #region Propiedades
 
@@ -26,8 +26,8 @@ namespace CN
 
         public string nombreCompleto
         {
-            get { return nombreCompleto; }
-            set { nombreCompleto = value; }
+            get { return _nombreCompleto; }
+            set { _nombreCompleto = value; }
         }
 
         private DateTime _fechaIngreso;
@@ -154,6 +154,27 @@ namespace CN
                 if (DataBaseHelper.ExecuteNonQuery("dbo.SPBEmplados", parametros) == 0)
                 {
                     throw new CustomException("No se elimino el registro.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+
+        }
+
+        public static void login(string correo, string contrasena) //EsActivo pasa a 0
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            parametros.Add("@correoElectronico", correo);
+            parametros.Add("@contrasena", contrasena);
+
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPLogin", parametros) == 0)
+                {
+                    throw new CustomException("No se pudo iniciar sesión. Intente nuevamente.");
                 }
             }
             catch (Exception ex)
