@@ -16,7 +16,7 @@ namespace SistemaVentas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmModoPago());
+            Application.Run(new frmPrincipal());
         }
     }
 }
