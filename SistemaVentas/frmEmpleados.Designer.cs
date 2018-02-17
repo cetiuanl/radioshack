@@ -51,14 +51,15 @@
             // dgvEmpleados
             // 
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(12, 21);
+            this.dgvEmpleados.Location = new System.Drawing.Point(356, 28);
             this.dgvEmpleados.Name = "dgvEmpleados";
-            this.dgvEmpleados.Size = new System.Drawing.Size(991, 191);
+            this.dgvEmpleados.Size = new System.Drawing.Size(603, 313);
             this.dgvEmpleados.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(409, 545);
+            this.btnGuardar.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(184, 242);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
@@ -67,7 +68,8 @@
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Location = new System.Drawing.Point(490, 545);
+            this.btnDesactivar.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesactivar.Location = new System.Drawing.Point(184, 271);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
             this.btnDesactivar.TabIndex = 2;
@@ -76,92 +78,95 @@
             // 
             // txtIdEmpleado
             // 
-            this.txtIdEmpleado.Location = new System.Drawing.Point(152, 251);
+            this.txtIdEmpleado.Location = new System.Drawing.Point(143, 25);
             this.txtIdEmpleado.Name = "txtIdEmpleado";
-            this.txtIdEmpleado.Size = new System.Drawing.Size(137, 20);
+            this.txtIdEmpleado.Size = new System.Drawing.Size(200, 20);
             this.txtIdEmpleado.TabIndex = 3;
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(152, 305);
+            this.dtpFechaIngreso.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(143, 79);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
-            this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 21);
             this.dtpFechaIngreso.TabIndex = 4;
             // 
             // txtNombreCompleto
             // 
-            this.txtNombreCompleto.Location = new System.Drawing.Point(152, 276);
+            this.txtNombreCompleto.Location = new System.Drawing.Point(143, 50);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(137, 20);
+            this.txtNombreCompleto.Size = new System.Drawing.Size(200, 20);
             this.txtNombreCompleto.TabIndex = 5;
             // 
             // dtpFechaNacimiento
             // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(152, 357);
+            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(143, 130);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 21);
             this.dtpFechaNacimiento.TabIndex = 8;
             // 
             // txtCorreoElectronico
             // 
-            this.txtCorreoElectronico.Location = new System.Drawing.Point(152, 380);
+            this.txtCorreoElectronico.Location = new System.Drawing.Point(143, 156);
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
-            this.txtCorreoElectronico.Size = new System.Drawing.Size(137, 20);
+            this.txtCorreoElectronico.Size = new System.Drawing.Size(200, 20);
             this.txtCorreoElectronico.TabIndex = 9;
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(152, 406);
+            this.txtContrasena.Location = new System.Drawing.Point(143, 180);
             this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.Size = new System.Drawing.Size(137, 20);
+            this.txtContrasena.Size = new System.Drawing.Size(200, 20);
             this.txtContrasena.TabIndex = 10;
             // 
             // lbldEmpleado
             // 
             this.lbldEmpleado.AutoSize = true;
             this.lbldEmpleado.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldEmpleado.Location = new System.Drawing.Point(125, 254);
+            this.lbldEmpleado.Location = new System.Drawing.Point(109, 28);
             this.lbldEmpleado.Name = "lbldEmpleado";
-            this.lbldEmpleado.Size = new System.Drawing.Size(21, 14);
+            this.lbldEmpleado.Size = new System.Drawing.Size(28, 14);
             this.lbldEmpleado.TabIndex = 11;
-            this.lbldEmpleado.Text = "ID";
+            this.lbldEmpleado.Text = "ID:";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(97, 279);
+            this.lblNombre.Location = new System.Drawing.Point(81, 53);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(49, 14);
+            this.lblNombre.Size = new System.Drawing.Size(56, 14);
             this.lblNombre.TabIndex = 12;
-            this.lblNombre.Text = "Nombre";
+            this.lblNombre.Text = "Nombre:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(90, 307);
+            this.label2.Location = new System.Drawing.Point(74, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 14);
+            this.label2.Size = new System.Drawing.Size(63, 14);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Ingreso";
+            this.label2.Text = "Ingreso:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(113, 335);
+            this.label3.Location = new System.Drawing.Point(101, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 14);
+            this.label3.Size = new System.Drawing.Size(35, 14);
             this.label3.TabIndex = 14;
-            this.label3.Text = "ROL";
+            this.label3.Text = "ROL:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 410);
+            this.label4.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 183);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.Size = new System.Drawing.Size(126, 14);
             this.label4.TabIndex = 15;
             this.label4.Text = "Fecha Nacimiento:";
             // 
@@ -169,7 +174,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(89, 361);
+            this.label5.Location = new System.Drawing.Point(80, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 14);
             this.label5.TabIndex = 16;
@@ -178,25 +183,26 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(80, 384);
+            this.label6.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(53, 157);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.Size = new System.Drawing.Size(84, 14);
             this.label6.TabIndex = 17;
             this.label6.Text = "Contraseña:";
             // 
             // cboIdRol
             // 
             this.cboIdRol.FormattingEnabled = true;
-            this.cboIdRol.Location = new System.Drawing.Point(152, 330);
+            this.cboIdRol.Location = new System.Drawing.Point(143, 104);
             this.cboIdRol.Name = "cboIdRol";
-            this.cboIdRol.Size = new System.Drawing.Size(121, 21);
+            this.cboIdRol.Size = new System.Drawing.Size(200, 21);
             this.cboIdRol.TabIndex = 18;
             // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 607);
+            this.ClientSize = new System.Drawing.Size(971, 393);
             this.Controls.Add(this.cboIdRol);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
