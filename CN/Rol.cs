@@ -83,7 +83,8 @@ namespace CN
             }
             else //Si idRol = cero, significa que es una registro nuevo, entonces usar Insert.
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPIRoles", parametros) == 0)
+                parametros.Add("@esActivo", true);
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPARoles", parametros) == 0)
                 {
                     throw new CustomException("No se actualizo el registro.");
                 }
