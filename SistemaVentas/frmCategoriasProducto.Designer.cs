@@ -46,51 +46,51 @@
             this.dgvCategoriasProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoriasProducto.Location = new System.Drawing.Point(46, 45);
             this.dgvCategoriasProducto.Name = "dgvCategoriasProducto";
-            this.dgvCategoriasProducto.Size = new System.Drawing.Size(685, 210);
+            this.dgvCategoriasProducto.Size = new System.Drawing.Size(685, 259);
             this.dgvCategoriasProducto.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(212, 472);
+            this.btnGuardar.Location = new System.Drawing.Point(214, 530);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 24);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // btnDesactivar
             // 
-            this.btnDesactivar.Location = new System.Drawing.Point(435, 472);
+            this.btnDesactivar.Location = new System.Drawing.Point(437, 530);
             this.btnDesactivar.Name = "btnDesactivar";
-            this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
+            this.btnDesactivar.Size = new System.Drawing.Size(75, 24);
             this.btnDesactivar.TabIndex = 2;
             this.btnDesactivar.Text = "Eliminar";
             this.btnDesactivar.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(289, 388);
+            this.txtNombre.Location = new System.Drawing.Point(291, 446);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 20);
             this.txtNombre.TabIndex = 3;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(289, 339);
+            this.txtDescripcion.Location = new System.Drawing.Point(291, 397);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(221, 20);
             this.txtDescripcion.TabIndex = 4;
             // 
             // txtidCategoriasProducto
             // 
-            this.txtidCategoriasProducto.Location = new System.Drawing.Point(289, 284);
+            this.txtidCategoriasProducto.Location = new System.Drawing.Point(291, 342);
             this.txtidCategoriasProducto.Name = "txtidCategoriasProducto";
             this.txtidCategoriasProducto.Size = new System.Drawing.Size(100, 20);
             this.txtidCategoriasProducto.TabIndex = 5;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(615, 310);
+            this.textBox4.Location = new System.Drawing.Point(620, 345);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 6;
@@ -98,7 +98,7 @@
             // lblidCategoriasProducto
             // 
             this.lblidCategoriasProducto.AutoSize = true;
-            this.lblidCategoriasProducto.Location = new System.Drawing.Point(209, 287);
+            this.lblidCategoriasProducto.Location = new System.Drawing.Point(211, 345);
             this.lblidCategoriasProducto.Name = "lblidCategoriasProducto";
             this.lblidCategoriasProducto.Size = new System.Drawing.Size(65, 13);
             this.lblidCategoriasProducto.TabIndex = 7;
@@ -107,7 +107,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(209, 342);
+            this.lblNombre.Location = new System.Drawing.Point(211, 400);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 8;
@@ -116,7 +116,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(209, 395);
+            this.lblDescripcion.Location = new System.Drawing.Point(211, 453);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(63, 13);
             this.lblDescripcion.TabIndex = 9;
@@ -127,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(773, 525);
+            this.ClientSize = new System.Drawing.Size(773, 607);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblidCategoriasProducto);

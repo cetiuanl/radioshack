@@ -71,7 +71,7 @@ namespace CN
             {
                 if (_idCategoria > 0)
                 {
-                    parametros.Add("@idcategoria", this._idCategoria);
+                    parametros.Add("@idCategoria", this._idCategoria);
 
                     if (DataBaseHelper.ExecuteNonQuery("dbo.SPCCategoriasProducto", parametros) == 0)
                     {
@@ -105,7 +105,7 @@ namespace CN
         public static void desactivar(int idCategoria)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
-            parametros.Add("@idcategoria", idCategoria);
+            parametros.Add("@idCategoria", idCategoria);
             try
             {
                 if (DataBaseHelper.ExecuteNonQuery("dbo.SPBCategoriasProducto", parametros) == 0)
