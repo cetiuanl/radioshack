@@ -20,6 +20,8 @@ namespace SistemaVentas
         private void frmCategoriasProducto_Load(object sender, EventArgs e)
         {
             List<CategoriasProducto> listado = CategoriasProducto.traerTodos(true);
+            dgvCategoriasProducto.DataSource = listado;
+            dgvCategoriasProducto.Refresh();
         }
     }
 }
