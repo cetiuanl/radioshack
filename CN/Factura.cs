@@ -7,9 +7,9 @@ using CD;
 using CN.Excepciones;
 using System.Data;
 
-namespace CD
+namespace CN
 {
-    class Factura
+   public class Factura
     {
         #region Propiedades
         private int _folio;
@@ -133,21 +133,71 @@ namespace CD
                 throw new CustomException(ex.Message.ToString(), ex);
             }
         }
-        public bool desactivar()
-        {
-            return false;
-        }
-        public bool eliminar()
-        {
-            return false;
-        }
+        
+        
         #endregion
 
         #region Metodos Estaticos
 
-        public static bool eliminar (int folio)
+        public static void desactivar(int folio)
         {
-            return false;//TODO: Implementar CD y Store Procedure
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            parametros.Add("@folio", folio);
+
+            try
+            {
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                {
+                    throw new CustomException("No se elimino el registro");
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString());
+            }
+
+        }
+
+        public static Factura buscarPorFolio (int folio)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+
+            parametros.Add("@folio", folio);
+
+            DataTable dt = new DataTable();
+
+            DataBaseHelper.Fill(dt, "dbo.SLPFactura", parametros);
+            Factura resultado = null;
+            foreach(DataRow fila in dt.Rows)
+            {
+                resultado = new Factura(fila);
+                break;
+            }
+        }
+
+        public static List<Factura> traerTodos(bool filtrarSoloActivos = false)
+        {
+            Dictionary<string, object> parametros = new Dictionary<string, object>();
+            if (filtrarSoloActivos)
+            {
+                parametros.Add("@estatus", true);
+            }
+            DataTable dt = new DataTable();
+            try
+            {
+                DataBaseHelper.Fill(dt, "dbo.SLPFactura", parametros);
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message.ToString(), ex);
+            }
+            List<Factura> listado = new List<Factura>();
+            foreach(DataRow fila in dt.Rows)
+            {
+                listado.Add(new Factura(fila));
+            }
+            return listado;
         }
 
         #endregion 
