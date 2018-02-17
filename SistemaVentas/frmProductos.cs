@@ -24,7 +24,11 @@ namespace SistemaVentas
             dgvProductos.DataSource = listado;
             dgvProductos.Refresh();
 
-            List<>
+            List<CategoriasProducto> Categorias = CategoriasProducto.traerTodos(true);
+            cboIdCategoria.DataSource = Categorias;
+            cboIdCategoria.ValueMember = "idCategoria";
+            cboIdCategoria.DisplayMember = "nombre";
+            cboIdCategoria.Refresh();
         }
     }
 }

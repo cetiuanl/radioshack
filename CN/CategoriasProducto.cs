@@ -6,7 +6,7 @@ using CN.Excepciones;
 
 namespace CN
 {
-    class CategoriasProducto
+    public class CategoriasProducto
     {
         #region Propiedades
 
@@ -147,7 +147,7 @@ namespace CN
 
             if (filtrarSoloActivos)
             {
-                parametros.Add("@idCategoria", true);
+                parametros.Add("@esActivo", true);
 
             }
             DataTable dt = new DataTable();
