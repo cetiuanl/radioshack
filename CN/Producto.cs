@@ -119,7 +119,7 @@ namespace CN
                 else
                 {//Insert
                     parametros.Add("@esActivo", this.esActivo);
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCProductos", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAProductos", parametros) == 0)
                     {
                         throw new CustomException("No se creo el registro");
                     }
