@@ -24,6 +24,15 @@ namespace SistemaVentas
 
             dgvFactura.DataSource = listado;
             dgvFactura.Refresh();
+
+            //Agregar Modo de Pago
+            List<ModoPago> listadoModoPago = ModoPago.traerTodos();
+            cboModoPago.DataSource = listadoModoPago;
+            cboModoPago.ValueMember = "idModoPago";
+            cboModoPago.DisplayMember = "nombre";
+            cboModoPago.Refresh();
+
+
         }
     }
 }

@@ -58,8 +58,17 @@
     <Compile Include="frmModoPago.Designer.cs">
       <DependentUpon>frmModoPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCategoriasProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategoriasProducto.Designer.cs">
+      <DependentUpon>frmCategoriasProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCategoriasProducto.resx">
+      <DependentUpon>frmCategoriasProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmModoPago.resx">
       <DependentUpon>frmModoPago.cs</DependentUpon>
     </EmbeddedResource>

@@ -32,17 +32,19 @@
             this.Guardar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.ModoPago = new System.Windows.Forms.ComboBox();
-            this.ModoCliente = new System.Windows.Forms.ComboBox();
+            this.cboModoPago = new System.Windows.Forms.ComboBox();
+            this.cboModoCliente = new System.Windows.Forms.ComboBox();
+            this.Pago = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvFactura
             // 
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFactura.Location = new System.Drawing.Point(94, 36);
+            this.dgvFactura.Location = new System.Drawing.Point(26, 36);
             this.dgvFactura.Name = "dgvFactura";
-            this.dgvFactura.Size = new System.Drawing.Size(240, 150);
+            this.dgvFactura.Size = new System.Drawing.Size(680, 102);
             this.dgvFactura.TabIndex = 0;
             // 
             // Guardar
@@ -70,29 +72,49 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
             // 
-            // ModoPago
+            // cboModoPago
             // 
-            this.ModoPago.FormattingEnabled = true;
-            this.ModoPago.Location = new System.Drawing.Point(94, 212);
-            this.ModoPago.Name = "ModoPago";
-            this.ModoPago.Size = new System.Drawing.Size(154, 21);
-            this.ModoPago.TabIndex = 4;
+            this.cboModoPago.FormattingEnabled = true;
+            this.cboModoPago.Location = new System.Drawing.Point(94, 212);
+            this.cboModoPago.Name = "cboModoPago";
+            this.cboModoPago.Size = new System.Drawing.Size(154, 21);
+            this.cboModoPago.TabIndex = 4;
             // 
-            // ModoCliente
+            // cboModoCliente
             // 
-            this.ModoCliente.FormattingEnabled = true;
-            this.ModoCliente.Location = new System.Drawing.Point(93, 259);
-            this.ModoCliente.Name = "ModoCliente";
-            this.ModoCliente.Size = new System.Drawing.Size(155, 21);
-            this.ModoCliente.TabIndex = 5;
+            this.cboModoCliente.FormattingEnabled = true;
+            this.cboModoCliente.Location = new System.Drawing.Point(93, 259);
+            this.cboModoCliente.Name = "cboModoCliente";
+            this.cboModoCliente.Size = new System.Drawing.Size(155, 21);
+            this.cboModoCliente.TabIndex = 5;
+            // 
+            // Pago
+            // 
+            this.Pago.AutoSize = true;
+            this.Pago.Location = new System.Drawing.Point(25, 211);
+            this.Pago.Name = "Pago";
+            this.Pago.Size = new System.Drawing.Size(62, 13);
+            this.Pago.TabIndex = 6;
+            this.Pago.Text = "Modo Pago";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 266);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Tipo Client";
             // 
             // frmFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 444);
-            this.Controls.Add(this.ModoCliente);
-            this.Controls.Add(this.ModoPago);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Pago);
+            this.Controls.Add(this.cboModoCliente);
+            this.Controls.Add(this.cboModoPago);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Guardar);
@@ -102,6 +124,7 @@
             this.Load += new System.EventHandler(this.frmModoPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,7 +134,9 @@
         private System.Windows.Forms.Button Guardar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox ModoPago;
-        private System.Windows.Forms.ComboBox ModoCliente;
+        private System.Windows.Forms.ComboBox cboModoPago;
+        private System.Windows.Forms.ComboBox cboModoCliente;
+        private System.Windows.Forms.Label Pago;
+        private System.Windows.Forms.Label label1;
     }
 }

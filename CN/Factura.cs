@@ -48,8 +48,8 @@ namespace CN
 
         public int porcientoIVA
         {
-            get { return porcientoIVA; }
-            set { porcientoIVA = value; }
+            get { return _porcientoIVA; }
+            set { _porcientoIVA = value; }
         }
 
         private int _estatus;
@@ -87,7 +87,7 @@ namespace CN
             _idCliente = fila.Field<int>("idCliente");
             _fecha = fila.Field<DateTime>("fecha");
             _idModoPago = fila.Field<int>("idModoPago");
-            _porcientoIVA = fila.Field<int>("porcientoIV");
+            _porcientoIVA = fila.Field<int>("porcientoIVA");
             _estatus = fila.Field<int>("estatus");
             _idEmpleado = fila.Field<int>("idEmpleado");
         }
@@ -174,6 +174,8 @@ namespace CN
                 resultado = new Factura(fila);
                 break;
             }
+
+            return resultado;
         }
 
         public static List<Factura> traerTodos(bool filtrarSoloActivos = false)
@@ -181,12 +183,12 @@ namespace CN
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             if (filtrarSoloActivos)
             {
-                parametros.Add("@estatus", true);
+                parametros.Add("@estatus", 1);
             }
             DataTable dt = new DataTable();
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SLPFactura", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLFacturas", parametros);
             }
             catch (Exception ex)
             {
