@@ -10,7 +10,7 @@ namespace CapaNegocios
     {
         #region Propiedades
         public int idRol { get; }
-        public string nombre { get; }
+       
         public string descripcion { get; }
         public bool esActivo { get; }
         #endregion
@@ -30,11 +30,11 @@ namespace CapaNegocios
         /// <param name="_nombre">nombre del rol</param>
         /// <param name="_descripcion">descripcion del rol</param>
         public Rol(int _idRol,
-                    string _nombre,
+                   
                     string _descripcion)
         {
             this.idRol = _idRol;
-            this.nombre = _nombre;
+     
             this.descripcion = _descripcion;
         }
 
@@ -43,18 +43,17 @@ namespace CapaNegocios
         /// </summary>        
         /// <param name="_nombre">nombre del rol</param>
         /// <param name="_descripcion">descripcion del rol</param>
-        public Rol(string _nombre,
+        public Rol(
                     string _descripcion)
         {            
-            this.nombre = _nombre;
+            
             this.descripcion = _descripcion;
         }
 
 
         public Rol(DataRow fila)
         {
-            this.idRol = fila.Field<int>("idRol");
-            this.nombre = fila.Field<string>("nombre");
+            this.idRol = fila.Field<int>("idRol"); 
             this.descripcion = fila.Field<string>("descripcion");
             this.esActivo = fila.Field<bool>("esActivo");
         }
@@ -67,7 +66,7 @@ namespace CapaNegocios
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             //Al diccionario "parametros" agregamos el nombre del parametro del
             // Store Procedure y su valor (propiedad de la clase correspondiente)            
-            parametros.Add("@nombre", this.nombre);
+          
             parametros.Add("@descripcion", this.descripcion);            
 
             //Si idRol es mayor a 0, significa que es una registro existente, usar un Update            
@@ -122,7 +121,7 @@ namespace CapaNegocios
             
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLRol", parametros);
             }
             catch (Exception ex)
             {
@@ -146,7 +145,7 @@ namespace CapaNegocios
 
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLRol", parametros);
             }
             catch (Exception ex)
             {
@@ -172,7 +171,7 @@ namespace CapaNegocios
 
             try
             {
-                DataBaseHelper.Fill(dt, "dbo.SPLRoles", parametros);
+                DataBaseHelper.Fill(dt, "dbo.SPLRol", parametros);
             }
             catch (Exception ex)
             {
