@@ -30,5 +30,10 @@ namespace SistemaVentas
             cboIdCategoria.DisplayMember = "nombre";
             cboIdCategoria.Refresh();
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

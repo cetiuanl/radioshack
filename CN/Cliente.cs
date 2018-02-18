@@ -205,9 +205,7 @@ namespace CN {
             }
             return listado;
         }
-
-
-
+        
         #endregion
     }
 }

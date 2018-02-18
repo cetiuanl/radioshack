@@ -25,7 +25,6 @@ namespace SistemaVentas
 #else
             MessageBox.Show("Estas en Release");
 #endif
-
             cargarDatos();
         }
 
@@ -57,8 +56,7 @@ namespace SistemaVentas
             finally
             {
                 cargarDatos();
-            }
-            
+            }            
         }
     }
 }
