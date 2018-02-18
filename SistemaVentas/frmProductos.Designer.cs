@@ -43,12 +43,15 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblInventario = new System.Windows.Forms.Label();
             this.lblidCategoria = new System.Windows.Forms.Label();
+            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProductos
             // 
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.esActivo});
             this.dgvProductos.Location = new System.Drawing.Point(46, 12);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.Size = new System.Drawing.Size(498, 223);
@@ -105,8 +108,10 @@
             // 
             this.txtIdProducto.Location = new System.Drawing.Point(137, 250);
             this.txtIdProducto.Name = "txtIdProducto";
+            this.txtIdProducto.ReadOnly = true;
             this.txtIdProducto.Size = new System.Drawing.Size(178, 20);
             this.txtIdProducto.TabIndex = 7;
+            this.txtIdProducto.Text = "0";
             // 
             // cboIdCategoria
             // 
@@ -170,6 +175,13 @@
             this.lblidCategoria.TabIndex = 14;
             this.lblidCategoria.Text = "Categoria";
             // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,5 +228,6 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblInventario;
         private System.Windows.Forms.Label lblidCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
     }
 }

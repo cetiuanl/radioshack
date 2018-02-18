@@ -20,6 +20,11 @@ namespace SistemaVentas
 
         private void frmProductos_Load(object sender, EventArgs e)
         {
+            cargarDatos();
+        }
+        
+        private void cargarDatos()
+        {
             List<Producto> listado = Producto.traerTodos(true);
             dgvProductos.DataSource = listado;
             dgvProductos.Refresh();
@@ -30,10 +35,27 @@ namespace SistemaVentas
             cboIdCategoria.DisplayMember = "nombre";
             cboIdCategoria.Refresh();
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            int idProducto = IntegerExtensions.ParseInt(txtIdProducto.Text);
+            int idCategoriaProducto = IntegerExtensions.ParseInt(cboIdCategoria.SelectedValue.ToString());
+            decimal precio = DecimalExtensions.ParseDecimal(txtPrecio.Text);
+            decimal inventario = DecimalExtensions.ParseDecimal(txtInventario.Text);
 
+            Producto nuevoProducto = new Producto(idProducto,txtNombre.Text,txtMarca.Text,precio,inventario,idCategoriaProducto,true);
+
+            try
+            {
+                nuevoProducto.guardar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                cargarDatos();
+            }
         }
     }
 }
