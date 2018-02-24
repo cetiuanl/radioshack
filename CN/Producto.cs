@@ -139,7 +139,7 @@ namespace CN
         {
                 Dictionary<string, object> parametros = new Dictionary<string, object>();
                 parametros.Add("@idProducto", idProducto);
-
+                parametros.Add("@esActivo",false);
                 try
                 {
                     if (DataBaseHelper.ExecuteNonQuery("dbo.SPBProductos", parametros) == 0)
