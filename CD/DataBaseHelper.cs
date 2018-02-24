@@ -8,13 +8,14 @@ namespace CD
 {
     public static class DataBaseHelper
     {
-        #region "FILL DATA TABLE"
 #if DEBUG
         static string _connectionString = "Server=148.234.16.54;Database=dbRadioShack;User Id=ceti;Password=ceti;";
 #else
         static string _connectionString = "Server=148.234.16.54;Database=dbRadioShack;User Id=ceti;Password=ceti;";
 #endif
 
+        #region "FILL DATA TABLE"
+        
         public static void Fill(DataTable dataTable, String procedureName)
         {
             SqlConnection oConnection = new SqlConnection(_connectionString);
@@ -368,7 +369,6 @@ namespace CD
         }
 
         #endregion
-
         
     }
 }
