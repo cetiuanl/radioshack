@@ -26,7 +26,7 @@ namespace SistemaVentas
 #if DEBUG
                 Empleado usuarioValido = Empleado.buscarPorId(200);
 #else
-                Empleado usuarioValido = Empleado.iniciarSesion(txtCorreo.Text, txtContrasena.Text);
+                Empleado usuarioValido = Empleado.iniciarSesion(txtCorreo.Text, SHA.GenerateSHA512String(txtContrasena.Text));
 #endif
 
                 if (usuarioValido != null)
@@ -36,11 +36,14 @@ namespace SistemaVentas
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Credenciales invalidas. Vuelve a internar.");
+                }
             }
             catch (Exception)
             {
-                this.DialogResult = DialogResult.Retry;
-                            
+                this.DialogResult = DialogResult.Retry;                            
             }
         }
 
