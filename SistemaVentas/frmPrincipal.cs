@@ -57,9 +57,11 @@ namespace SistemaVentas
 
         private void modoDePagosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmModoPago form = new frmModoPago();
+            frmModoPago form = frmModoPago.getInstancia;
             form.MdiParent = this;
             form.Show();
+            form.WindowState = FormWindowState.Maximized;
+           
         }
 
         private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)

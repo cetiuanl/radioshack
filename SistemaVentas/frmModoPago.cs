@@ -13,6 +13,20 @@ namespace SistemaVentas
 {
     public partial class frmModoPago : Form
     {
+        private static frmModoPago instancia;
+
+        public static frmModoPago getInstancia
+        {
+            get
+            {
+                if( instancia == null || instancia.IsDisposed)
+                {
+                    instancia = new frmModoPago();
+                }
+                return instancia;
+            }
+        }
+
         public frmModoPago()
         {
             InitializeComponent();
