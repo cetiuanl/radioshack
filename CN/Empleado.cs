@@ -129,7 +129,7 @@ namespace CN
                 else //SP - Insert
                 {
                     parametros.Add("@esActivo", this._esActivo); //Se agrega este parametro dentro del if ,ya que no se necesita en el update
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAEmplados", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAEmpleados", parametros) == 0)
                     {
                         throw new CustomException("No se creo el registro.");
                     }
@@ -150,7 +150,7 @@ namespace CN
 
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBEmplados", parametros) == 0)
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBEmpleados", parametros) == 0)
                 {
                     throw new CustomException("No se elimino el registro.");
                 }

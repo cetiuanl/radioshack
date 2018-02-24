@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cboIdRol = new System.Windows.Forms.ComboBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,8 +57,10 @@
             this.esActivo});
             this.dgvEmpleados.Location = new System.Drawing.Point(356, 28);
             this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpleados.Size = new System.Drawing.Size(603, 313);
-            this.dgvEmpleados.TabIndex = 0;
+            this.dgvEmpleados.TabIndex = 9;
+            this.dgvEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellClick);
             // 
             // esActivo
             // 
@@ -69,10 +72,10 @@
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(184, 242);
+            this.btnGuardar.Location = new System.Drawing.Point(144, 242);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Size = new System.Drawing.Size(115, 23);
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -80,19 +83,24 @@
             // btnDesactivar
             // 
             this.btnDesactivar.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesactivar.Location = new System.Drawing.Point(184, 271);
+            this.btnDesactivar.Location = new System.Drawing.Point(144, 271);
             this.btnDesactivar.Name = "btnDesactivar";
-            this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
-            this.btnDesactivar.TabIndex = 2;
+            this.btnDesactivar.Size = new System.Drawing.Size(115, 23);
+            this.btnDesactivar.TabIndex = 8;
             this.btnDesactivar.Text = "Eliminar";
             this.btnDesactivar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // txtIdEmpleado
             // 
+            this.txtIdEmpleado.Enabled = false;
+            this.txtIdEmpleado.HideSelection = false;
             this.txtIdEmpleado.Location = new System.Drawing.Point(143, 25);
             this.txtIdEmpleado.Name = "txtIdEmpleado";
             this.txtIdEmpleado.Size = new System.Drawing.Size(200, 20);
-            this.txtIdEmpleado.TabIndex = 3;
+            this.txtIdEmpleado.TabIndex = 0;
+            this.txtIdEmpleado.TabStop = false;
+            this.txtIdEmpleado.Text = "0";
             // 
             // dtpFechaIngreso
             // 
@@ -100,14 +108,14 @@
             this.dtpFechaIngreso.Location = new System.Drawing.Point(143, 79);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 21);
-            this.dtpFechaIngreso.TabIndex = 4;
+            this.dtpFechaIngreso.TabIndex = 3;
             // 
             // txtNombreCompleto
             // 
             this.txtNombreCompleto.Location = new System.Drawing.Point(143, 50);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
             this.txtNombreCompleto.Size = new System.Drawing.Size(200, 20);
-            this.txtNombreCompleto.TabIndex = 5;
+            this.txtNombreCompleto.TabIndex = 1;
             // 
             // dtpFechaNacimiento
             // 
@@ -115,21 +123,21 @@
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(143, 130);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 21);
-            this.dtpFechaNacimiento.TabIndex = 8;
+            this.dtpFechaNacimiento.TabIndex = 4;
             // 
             // txtCorreoElectronico
             // 
-            this.txtCorreoElectronico.Location = new System.Drawing.Point(143, 156);
+            this.txtCorreoElectronico.Location = new System.Drawing.Point(144, 157);
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
             this.txtCorreoElectronico.Size = new System.Drawing.Size(200, 20);
-            this.txtCorreoElectronico.TabIndex = 9;
+            this.txtCorreoElectronico.TabIndex = 6;
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(143, 180);
+            this.txtContrasena.Location = new System.Drawing.Point(143, 181);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(200, 20);
-            this.txtContrasena.TabIndex = 10;
+            this.txtContrasena.TabIndex = 5;
             // 
             // lbldEmpleado
             // 
@@ -175,7 +183,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 183);
+            this.label4.Location = new System.Drawing.Point(12, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 14);
             this.label4.TabIndex = 15;
@@ -185,7 +193,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(80, 135);
+            this.label5.Location = new System.Drawing.Point(82, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 14);
             this.label5.TabIndex = 16;
@@ -195,7 +203,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(53, 157);
+            this.label6.Location = new System.Drawing.Point(53, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 14);
             this.label6.TabIndex = 17;
@@ -207,13 +215,25 @@
             this.cboIdRol.Location = new System.Drawing.Point(143, 104);
             this.cboIdRol.Name = "cboIdRol";
             this.cboIdRol.Size = new System.Drawing.Size(200, 21);
-            this.cboIdRol.TabIndex = 18;
+            this.cboIdRol.TabIndex = 3;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Font = new System.Drawing.Font("Monospac821 BT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.Location = new System.Drawing.Point(144, 300);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(115, 23);
+            this.btnNuevo.TabIndex = 18;
+            this.btnNuevo.Text = "Nuevo Registro";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // frmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 393);
+            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.cboIdRol);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -260,5 +280,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboIdRol;
         private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
