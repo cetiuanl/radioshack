@@ -31,7 +31,7 @@
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnDesactivar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
@@ -48,6 +48,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
+            this.NuevoRegistro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,8 +59,11 @@
             this.esActivo});
             this.dgvClientes.Location = new System.Drawing.Point(12, 12);
             this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(541, 136);
             this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.TabStop = false;
+            this.dgvClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellClick);
             // 
             // esActivo
             // 
@@ -70,71 +74,73 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(162, 551);
+            this.btnGuardar.Location = new System.Drawing.Point(81, 551);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnEliminar
+            // btnDesactivar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(337, 551);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Location = new System.Drawing.Point(232, 551);
+            this.btnDesactivar.Name = "btnDesactivar";
+            this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
+            this.btnDesactivar.TabIndex = 8;
+            this.btnDesactivar.Text = "Eliminar";
+            this.btnDesactivar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(162, 213);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(200, 20);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 0;
             // 
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(162, 261);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(200, 20);
-            this.txtApellidos.TabIndex = 4;
+            this.txtApellidos.TabIndex = 1;
             // 
             // txtDomicilio
             // 
             this.txtDomicilio.Location = new System.Drawing.Point(162, 300);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(200, 20);
-            this.txtDomicilio.TabIndex = 5;
+            this.txtDomicilio.TabIndex = 2;
             // 
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(162, 387);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(200, 20);
-            this.txtTelefono.TabIndex = 6;
+            this.txtTelefono.TabIndex = 4;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(162, 430);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(200, 20);
-            this.txtCorreo.TabIndex = 7;
+            this.txtCorreo.TabIndex = 5;
             // 
             // txtRFC
             // 
             this.txtRFC.Location = new System.Drawing.Point(162, 477);
             this.txtRFC.Name = "txtRFC";
             this.txtRFC.Size = new System.Drawing.Size(200, 20);
-            this.txtRFC.TabIndex = 8;
+            this.txtRFC.TabIndex = 6;
             // 
             // dtpFechaNacimiento
             // 
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(162, 342);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaNacimiento.TabIndex = 9;
+            this.dtpFechaNacimiento.TabIndex = 3;
             // 
             // label1
             // 
@@ -214,14 +220,26 @@
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.ReadOnly = true;
             this.txtIdCliente.Size = new System.Drawing.Size(200, 20);
-            this.txtIdCliente.TabIndex = 18;
+            this.txtIdCliente.TabIndex = 0;
+            this.txtIdCliente.TabStop = false;
             this.txtIdCliente.Text = "0";
+            // 
+            // NuevoRegistro
+            // 
+            this.NuevoRegistro.Location = new System.Drawing.Point(385, 551);
+            this.NuevoRegistro.Name = "NuevoRegistro";
+            this.NuevoRegistro.Size = new System.Drawing.Size(99, 23);
+            this.NuevoRegistro.TabIndex = 18;
+            this.NuevoRegistro.Text = "Nuevo Registro";
+            this.NuevoRegistro.UseVisualStyleBackColor = true;
+            this.NuevoRegistro.Click += new System.EventHandler(this.NuevoRegistro_Click);
             // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 596);
+            this.Controls.Add(this.NuevoRegistro);
             this.Controls.Add(this.txtIdCliente);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -238,7 +256,7 @@
             this.Controls.Add(this.txtDomicilio);
             this.Controls.Add(this.txtApellidos);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnDesactivar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvClientes);
             this.Name = "frmClientes";
@@ -254,7 +272,7 @@
 
         private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnDesactivar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellidos;
         private System.Windows.Forms.TextBox txtDomicilio;
@@ -272,5 +290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtIdCliente;
+        private System.Windows.Forms.Button NuevoRegistro;
     }
 }
