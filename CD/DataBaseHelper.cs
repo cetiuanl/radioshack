@@ -97,7 +97,7 @@ namespace CD
             }
         }
 
-        #endregion
+        #endregion//DATA TABLE REPRESENTA INFORMACIÓN QUE OBTENEMOS DE LA BASE DE DATOS {ROWS & COLUMNAS}, ES UNA TABLA SOLAMENTE
 
         #region "FILL DATASET"
 
@@ -170,7 +170,7 @@ namespace CD
             }
         }
 
-        #endregion
+        #endregion//EL DATA SET CONTIENE DATA TABLES Y SE USA CUANDO SE NECESITAN VARIAS TABLAS EN UNA CONSULTA
 
         #region "EXECUTE SCALAR"
 
@@ -253,7 +253,7 @@ namespace CD
             return oReturnValue;
         }
 
-        #endregion
+        #endregion//LEE LA PRIMERA COLUMNA Y FILA DE CADA TABLA
 
         #region "EXECUTE NON QUERY"
 

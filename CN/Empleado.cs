@@ -121,7 +121,7 @@ namespace CN
                 if (_idEmpleado > 0) //SP - Update de registros
                 {
                     parametros.Add("@idEmpleado", this._idEmpleado); //Se agrega este parametro dentro del if ,ya que no se necesita en el insert
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCEmplados", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCEmpleados", parametros) == 0)
                     {
                         throw new CustomException("No se actualizo el registro.");
                     }
