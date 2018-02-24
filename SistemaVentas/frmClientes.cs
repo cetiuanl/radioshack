@@ -151,7 +151,7 @@ namespace SistemaVentas
 
         private void NuevoRegistro_Click(object sender, EventArgs e)
         {
-
+            limpiarCampo();
         }
     }
 }
