@@ -90,7 +90,7 @@ namespace CN
             this.esActivo = esActivo;
             this.fechaNacimiento = fechaNacimiento;
             this.correoElectronico = correoElectronico;
-            this.contrasena = contrasena;
+            this.contrasena = SHA.GenerateSHA512String(contrasena);
         }
 
         public Empleado(DataRow fila) //DataRow
@@ -165,6 +165,7 @@ namespace CN
 
         public static Empleado iniciarSesion(string correo, string contrasena)
         {
+
             Dictionary<string, object> parametros = new Dictionary<string, object>();
             parametros.Add("@correo", correo);
             parametros.Add("@contrasena", contrasena);
