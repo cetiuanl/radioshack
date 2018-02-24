@@ -94,7 +94,7 @@ namespace CN
         #endregion
 
         #region  Funciones
-        public void guardar() //
+        public void guardar()
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
 
@@ -107,22 +107,20 @@ namespace CN
             parametros.Add("@idEmpleado", this._idEmpleado);
 
          try {
-
                 if (_idModoPago > 0)
                 {
                     parametros.Add("@idModoPago", this._idModoPago);
 
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCModoPago", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPCFacturas", parametros) == 0)
                     {
                         throw new CustomException("No se actualizo el registro");
                     }
 
                 }
                 else
-                { //Insert
-                  // return CapaDatos.DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 1;
+                { //Insert                  
                     parametros.Add("@estatus", this._estatus);
-                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAModoPago", parametros) == 0)
+                    if (DataBaseHelper.ExecuteNonQuery("dbo.SPAFacturas", parametros) == 0)
                     {
                         throw new CustomException("No se creo el registro");
                     }
@@ -147,7 +145,7 @@ namespace CN
 
             try
             {
-                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBModoPago", parametros) == 0)
+                if (DataBaseHelper.ExecuteNonQuery("dbo.SPBFacturas", parametros) == 0)
                 {
                     throw new CustomException("No se elimino el registro");
                 }
@@ -159,7 +157,7 @@ namespace CN
 
         }
 
-        public static Factura buscarPorFolio (int folio)
+        public static Factura buscarPorFolio(int folio)
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
 
@@ -178,13 +176,10 @@ namespace CN
             return resultado;
         }
 
-        public static List<Factura> traerTodos(bool filtrarSoloActivos = false)
+        public static List<Factura> traerTodos()
         {
             Dictionary<string, object> parametros = new Dictionary<string, object>();
-            if (filtrarSoloActivos)
-            {
-                parametros.Add("@estatus", 1);
-            }
+            
             DataTable dt = new DataTable();
             try
             {

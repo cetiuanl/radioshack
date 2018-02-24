@@ -43,7 +43,7 @@ namespace CN
         }
         #endregion
         #region Constructores
-        public CategoriasProducto(int idCategoria, string nombre, string detalles, bool esActivo)
+        public CategoriasProducto(int idCategoria, string nombre, string descripcion, bool esActivo)
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -71,7 +71,7 @@ namespace CN
             {
                 if (_idCategoria > 0)
                 {
-                    parametros.Add("@idcategoria", this._idCategoria);
+                    parametros.Add("@idCategoria", this._idCategoria);
 
                     if (DataBaseHelper.ExecuteNonQuery("dbo.SPCCategoriasProducto", parametros) == 0)
                     {

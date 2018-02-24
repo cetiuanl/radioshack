@@ -34,20 +34,23 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtidCategoriasProducto = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblidCategoriasProducto = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
+            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoriasProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvCategoriasProducto
             // 
             this.dgvCategoriasProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoriasProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.esActivo});
             this.dgvCategoriasProducto.Location = new System.Drawing.Point(46, 45);
             this.dgvCategoriasProducto.Name = "dgvCategoriasProducto";
             this.dgvCategoriasProducto.Size = new System.Drawing.Size(685, 259);
             this.dgvCategoriasProducto.TabIndex = 0;
+            this.dgvCategoriasProducto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategoriasProducto_CellContentClick);
             // 
             // btnGuardar
             // 
@@ -57,6 +60,7 @@
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnDesactivar
             // 
@@ -85,15 +89,10 @@
             // 
             this.txtidCategoriasProducto.Location = new System.Drawing.Point(291, 342);
             this.txtidCategoriasProducto.Name = "txtidCategoriasProducto";
+            this.txtidCategoriasProducto.ReadOnly = true;
             this.txtidCategoriasProducto.Size = new System.Drawing.Size(100, 20);
             this.txtidCategoriasProducto.TabIndex = 5;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(620, 345);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 6;
+            this.txtidCategoriasProducto.Text = "0";
             // 
             // lblidCategoriasProducto
             // 
@@ -122,6 +121,13 @@
             this.lblDescripcion.TabIndex = 9;
             this.lblDescripcion.Text = "Descripción";
             // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
+            // 
             // frmCategoriasProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,7 +137,6 @@
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblidCategoriasProducto);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtidCategoriasProducto);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombre);
@@ -155,9 +160,9 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtidCategoriasProducto;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label lblidCategoriasProducto;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
     }
 }
