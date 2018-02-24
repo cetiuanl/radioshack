@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnDesactivar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.lblInventario = new System.Windows.Forms.Label();
             this.lblidCategoria = new System.Windows.Forms.Label();
-            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,8 +54,17 @@
             this.esActivo});
             this.dgvProductos.Location = new System.Drawing.Point(46, 12);
             this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(498, 223);
             this.dgvProductos.TabIndex = 0;
+            this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
+            // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
             // 
             // btnGuardar
             // 
@@ -75,6 +84,7 @@
             this.btnDesactivar.TabIndex = 2;
             this.btnDesactivar.Text = "Eliminar";
             this.btnDesactivar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // txtNombre
             // 
@@ -96,6 +106,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(178, 20);
             this.txtPrecio.TabIndex = 5;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaPositivos_KeyPress);
             // 
             // txtInventario
             // 
@@ -103,6 +114,7 @@
             this.txtInventario.Name = "txtInventario";
             this.txtInventario.Size = new System.Drawing.Size(178, 20);
             this.txtInventario.TabIndex = 6;
+            this.txtInventario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validaPositivos_KeyPress);
             // 
             // txtIdProducto
             // 
@@ -174,13 +186,6 @@
             this.lblidCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblidCategoria.TabIndex = 14;
             this.lblidCategoria.Text = "Categoria";
-            // 
-            // esActivo
-            // 
-            this.esActivo.DataPropertyName = "esActivo";
-            this.esActivo.HeaderText = "esActivo";
-            this.esActivo.Name = "esActivo";
-            this.esActivo.Visible = false;
             // 
             // frmProductos
             // 
