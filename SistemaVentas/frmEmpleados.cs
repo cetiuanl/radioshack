@@ -33,5 +33,13 @@ namespace SistemaVentas
             cboIdRol.Refresh();
 
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            //int idEmpleado = IntegerExtensions.ParseInt(txtIdEmpleado.Text);
+           // DateTime fechaIngreso
+            //Empleado nuevoEmpleado = new Empleado(idEmpleado,this.txtIdEmpleado, nombreCompleto,this.txtNombreCompleto, 
+                //dtpFechaIngreso.Text,this.dtpFechaIngreso);
+        }
     }
 }
