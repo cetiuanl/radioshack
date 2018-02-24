@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvModoPagos = new System.Windows.Forms.DataGridView();
+            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnDesactivar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -37,7 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.esActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModoPagos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,15 +50,25 @@
             this.esActivo});
             this.dgvModoPagos.Location = new System.Drawing.Point(28, 41);
             this.dgvModoPagos.Name = "dgvModoPagos";
+            this.dgvModoPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModoPagos.Size = new System.Drawing.Size(574, 273);
             this.dgvModoPagos.TabIndex = 0;
+            this.dgvModoPagos.TabStop = false;
+            this.dgvModoPagos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModoPagos_CellClick);
+            // 
+            // esActivo
+            // 
+            this.esActivo.DataPropertyName = "esActivo";
+            this.esActivo.HeaderText = "esActivo";
+            this.esActivo.Name = "esActivo";
+            this.esActivo.Visible = false;
             // 
             // btnGuardar
             // 
             this.btnGuardar.Location = new System.Drawing.Point(178, 562);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -66,16 +78,17 @@
             this.btnDesactivar.Location = new System.Drawing.Point(292, 562);
             this.btnDesactivar.Name = "btnDesactivar";
             this.btnDesactivar.Size = new System.Drawing.Size(75, 23);
-            this.btnDesactivar.TabIndex = 2;
+            this.btnDesactivar.TabIndex = 3;
             this.btnDesactivar.Text = "Eliminar";
             this.btnDesactivar.UseVisualStyleBackColor = true;
+            this.btnDesactivar.Click += new System.EventHandler(this.btnDesactivar_Click);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(127, 440);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(240, 20);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 0;
             // 
             // txtIdModoPago
             // 
@@ -83,7 +96,8 @@
             this.txtIdModoPago.Name = "txtIdModoPago";
             this.txtIdModoPago.ReadOnly = true;
             this.txtIdModoPago.Size = new System.Drawing.Size(100, 20);
-            this.txtIdModoPago.TabIndex = 4;
+            this.txtIdModoPago.TabIndex = 0;
+            this.txtIdModoPago.TabStop = false;
             this.txtIdModoPago.Text = "0";
             // 
             // txtDetalles
@@ -91,7 +105,7 @@
             this.txtDetalles.Location = new System.Drawing.Point(127, 483);
             this.txtDetalles.Name = "txtDetalles";
             this.txtDetalles.Size = new System.Drawing.Size(240, 20);
-            this.txtDetalles.TabIndex = 5;
+            this.txtDetalles.TabIndex = 1;
             // 
             // label1
             // 
@@ -120,18 +134,31 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Detalles:";
             // 
-            // esActivo
+            // textBox1
             // 
-            this.esActivo.DataPropertyName = "esActivo";
-            this.esActivo.HeaderText = "esActivo";
-            this.esActivo.Name = "esActivo";
-            this.esActivo.Visible = false;
+            this.textBox1.Location = new System.Drawing.Point(408, 395);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(408, 562);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 10;
+            this.btnNuevo.Text = "Nuevo registro";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // frmModoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 660);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -162,5 +189,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn esActivo;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
