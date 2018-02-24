@@ -89,6 +89,7 @@
             this.Controls.Add(this.btnEntrar);
             this.Name = "frmInicioSesion";
             this.Text = "Inicio de Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmInicioSesion_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CN;
 
 namespace SistemaVentas
 {
     public partial class frmPrincipal : Form
     {
+        public Empleado usuarioActual;
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -64,6 +67,28 @@ namespace SistemaVentas
             frmEmpleados form = new frmEmpleados();
             form.MdiParent = this;
             form.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            frmInicioSesion frm = new frmInicioSesion();
+
+            DialogResult result = frm.ShowDialog();
+
+
+            if (result == DialogResult.Abort)
+            {
+                this.Close();
+            }
+            else if (result == DialogResult.OK)
+            {
+                this.usuarioActual = frm.usuarioActual;
+            }
+            else if (result == DialogResult.Retry)
+            {
+                MessageBox.Show("Ha ocurrido un problema. Vuelve a intentar.");
+            }
+
         }
     }
 }
